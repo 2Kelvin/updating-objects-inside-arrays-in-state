@@ -1,7 +1,5 @@
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 var nextId = 3;
 var startingList = [{ id: 0, title: "The Wall of China", seen: false }, { id: 1, title: "Maasai Mara", seen: false }, { id: 2, title: "Thompson Waterfalls", seen: true }];
 
@@ -17,21 +15,27 @@ function BucketList() {
       setZoesList = _React$useState4[1];
 
   function handleToggleMyList(touristSiteId, nextSeen) {
-    var myNextList = [].concat(_toConsumableArray(myList));
-    var touristSite = myNextList.find(function (ts) {
-      return ts.id === touristSiteId;
-    });
-    touristSite.seen === nextSeen;
-    setMyList(myNextList);
+    setMyList(myList.map(function (touristSite) {
+      if (touristSite.id === touristSiteId) {
+        //creating a new object with new changes
+        return Object.assign({}, touristSite, { seen: nextSeen });
+      } else {
+        //return the same old object with no changes
+        return touristSite;
+      }
+    }));
   }
 
   function handleToggleZoesList(touristSiteId, nextSeen) {
-    var zoesNextList = [].concat(_toConsumableArray(zoesList));
-    var touristSite = zoesNextList.find(function (ts) {
-      return ts.id === touristSiteId;
-    });
-    touristSite.seen === nextSeen;
-    setZoesList(zoesNextList);
+    setZoesList(zoesList.map(function (touristSite) {
+      if (touristSite.id === touristSiteId) {
+        //creating a new object with new changes
+        return Object.assign({}, touristSite, { seen: nextSeen });
+      } else {
+        //return the same old object with no changes
+        return touristSite;
+      }
+    }));
   }
 
   return React.createElement(
@@ -43,17 +47,25 @@ function BucketList() {
       "Tourist Site Bucket List"
     ),
     React.createElement(
-      "h2",
-      null,
-      "My list of tourist sites to see:"
+      "div",
+      { className: "my_list" },
+      React.createElement(
+        "h2",
+        null,
+        "My list of tourist sites to see:"
+      ),
+      React.createElement(PlacesList, { places: myList, onToggle: handleToggleMyList })
     ),
-    React.createElement(PlacesList, { places: myList, onToggle: handleToggleMyList }),
     React.createElement(
-      "h2",
-      null,
-      "Zoe's list of tourist sites to see:"
-    ),
-    React.createElement(PlacesList, { places: zoesList, onToggle: handleToggleZoesList })
+      "div",
+      { className: "zoes_list" },
+      React.createElement(
+        "h2",
+        null,
+        "Zoe's list of tourist sites to see:"
+      ),
+      React.createElement(PlacesList, { places: zoesList, onToggle: handleToggleZoesList })
+    )
   );
 }
 

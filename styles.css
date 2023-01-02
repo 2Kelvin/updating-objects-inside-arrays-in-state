@@ -1,0 +1,27 @@
+body {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+}
+
+.bucket_list h1 {
+    background-color: lightgreen;
+}
+
+.my_list,
+.zoes_list {
+    padding: 1em;
+    border: 1px #777 solid;
+    border-radius: 15px;
+    margin-bottom: 2.5em;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+ul {
+    list-style: none;
+    padding: 0 1em;
+}
+
+input {
+    cursor: pointer;
+}

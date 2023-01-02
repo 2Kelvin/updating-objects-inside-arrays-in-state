@@ -10,26 +10,44 @@ function BucketList() {
   const [zoesList, setZoesList] = React.useState(startingList);
 
   function handleToggleMyList(touristSiteId, nextSeen) {
-    const myNextList = [...myList];
-    const touristSite = myNextList.find((ts) => ts.id === touristSiteId);
-    touristSite.seen === nextSeen;
-    setMyList(myNextList);
+    setMyList(
+      myList.map((touristSite) => {
+        if (touristSite.id === touristSiteId) {
+          //creating a new object with new changes
+          return { ...touristSite, seen: nextSeen };
+        } else {
+          //return the same old object with no changes
+          return touristSite;
+        }
+      })
+    );
   }
 
   function handleToggleZoesList(touristSiteId, nextSeen) {
-    const zoesNextList = [...zoesList];
-    const touristSite = zoesNextList.find((ts) => ts.id === touristSiteId);
-    touristSite.seen === nextSeen;
-    setZoesList(zoesNextList);
+    setZoesList(
+      zoesList.map((touristSite) => {
+        if (touristSite.id === touristSiteId) {
+          //creating a new object with new changes
+          return { ...touristSite, seen: nextSeen };
+        } else {
+          //return the same old object with no changes
+          return touristSite;
+        }
+      })
+    );
   }
 
   return (
     <div className="bucket_list">
       <h1>Tourist Site Bucket List</h1>
-      <h2>My list of tourist sites to see:</h2>
-      <PlacesList places={myList} onToggle={handleToggleMyList} />
-      <h2>Zoe's list of tourist sites to see:</h2>
-      <PlacesList places={zoesList} onToggle={handleToggleZoesList} />
+      <div className="my_list">
+        <h2>My list of tourist sites to see:</h2>
+        <PlacesList places={myList} onToggle={handleToggleMyList} />
+      </div>
+      <div className="zoes_list">
+        <h2>Zoe's list of tourist sites to see:</h2>
+        <PlacesList places={zoesList} onToggle={handleToggleZoesList} />
+      </div>
     </div>
   );
 }
