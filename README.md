@@ -1,5 +1,7 @@
 # updating-objects-inside-arrays-in-state
 
+![tourstSites](https://user-images.githubusercontent.com/85868026/210195168-bd5f3da7-4138-4633-a476-08f337c705ab.png)
+
 In this read, I learnt that:
 
 - objects 'contained' inside an array aren't really located inside the array, they are just `references to the objects`
