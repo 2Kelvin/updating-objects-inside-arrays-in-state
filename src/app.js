@@ -1,13 +1,13 @@
 let nextId = 3;
-const startingList = [
+const startingTouristList = [
   { id: 0, title: "The Wall of China", seen: false },
   { id: 1, title: "Maasai Mara", seen: false },
   { id: 2, title: "Thompson Waterfalls", seen: true },
 ];
 
 function BucketList() {
-  const [myList, setMyList] = React.useState(startingList);
-  const [zoesList, setZoesList] = React.useState(startingList);
+  const [myList, setMyList] = React.useState(startingTouristList);
+  const [zoesList, setZoesList] = React.useState(startingTouristList);
 
   function handleToggleMyList(touristSiteId, nextSeen) {
     setMyList(

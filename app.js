@@ -1,15 +1,15 @@
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var nextId = 3;
-var startingList = [{ id: 0, title: "The Wall of China", seen: false }, { id: 1, title: "Maasai Mara", seen: false }, { id: 2, title: "Thompson Waterfalls", seen: true }];
+var startingTouristList = [{ id: 0, title: "The Wall of China", seen: false }, { id: 1, title: "Maasai Mara", seen: false }, { id: 2, title: "Thompson Waterfalls", seen: true }];
 
 function BucketList() {
-  var _React$useState = React.useState(startingList),
+  var _React$useState = React.useState(startingTouristList),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       myList = _React$useState2[0],
       setMyList = _React$useState2[1];
 
-  var _React$useState3 = React.useState(startingList),
+  var _React$useState3 = React.useState(startingTouristList),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       zoesList = _React$useState4[0],
       setZoesList = _React$useState4[1];
